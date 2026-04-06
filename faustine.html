@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faustine — Mode & Style</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir:    #0f0e0d;
+    --creme:   #f7f3ee;
+    --or:      #c9a96e;
+    --or-pale: #e8d9c0;
+    --gris:    #6b6560;
+    --vert:    #2d6a4f;
+    --vert-bg: #eaf4ee;
+    --orange:  #c96a1a;
+    --orange-bg: #fdf0e6;
+    --rouge:   #a82828;
+    --rouge-bg: #fdeaea;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--creme);
+    color: var(--noir);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--or-pale);
+    background: var(--creme);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--noir);
+  }
+  .logo em { font-style: italic; color: var(--or); }
+  nav { display: flex; gap: 28px; }
+  nav a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gris);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--noir); }
+
+  /* ── HERO BANNIERE ── */
+  .hero {
+    padding: 60px 40px 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .hero-titre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .hero-titre em { font-style: italic; color: var(--or); }
+  .hero-sous {
+    font-size: 13px;
+    color: var(--gris);
+    letter-spacing: 0.05em;
+    margin-top: 12px;
+    max-width: 320px;
+    line-height: 1.7;
+  }
+
+  /* ── ZONE DREAM FIT WIDGET ── */
+  .dreamfit-zone {
+    background: var(--noir);
+    color: var(--creme);
+    border-radius: 16px;
+    padding: 28px 32px;
+    min-width: 340px;
+    max-width: 380px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .dreamfit-zone::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, rgba(201,169,110,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .df-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .df-logo-badge {
+    width: 32px; height: 32px;
+    background: var(--or);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--noir);
+  }
+  .df-nom {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .df-tagline {
+    font-size: 11px;
+    color: rgba(247,243,238,0.5);
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── WIDGETS 3 ÉTATS ── */
+  .widgets { display: flex; flex-direction: column; gap: 10px; }
+
+  .widget {
+    border-radius: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+    position: relative;
+  }
+  .widget:hover { transform: translateX(3px); }
+
+  /* VERT */
+  .widget-vert {
+    background: rgba(45,106,79,0.15);
+    border-color: rgba(45,106,79,0.4);
+  }
+  .widget-vert.actif {
+    background: rgba(45,106,79,0.25);
+    border-color: var(--vert);
+  }
+  /* ORANGE */
+  .widget-orange {
+    background: rgba(201,106,26,0.1);
+    border-color: rgba(201,106,26,0.25);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .widget-orange.actif {
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(201,106,26,0.15);
+    border-color: rgba(201,106,26,0.5);
+  }
+  /* ROUGE */
+  .widget-rouge {
+    background: rgba(168,40,40,0.1);
+    border-color: rgba(168,40,40,0.25);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .widget-rouge.actif {
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(168,40,40,0.18);
+    border-color: rgba(168,40,40,0.5);
+  }
+
+  .widget-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .widget-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-vert   { background: #4caf82; box-shadow: 0 0 6px rgba(76,175,130,0.6); }
+  .dot-orange { background: #e8903a; box-shadow: 0 0 6px rgba(232,144,58,0.6); }
+  .dot-rouge  { background: #e05555; box-shadow: 0 0 6px rgba(224,85,85,0.6); }
+
+  .widget-titre {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--creme);
+    flex: 1;
+  }
+  .widget-statut {
+    font-size: 10px;
+    color: rgba(247,243,238,0.5);
+    letter-spacing: 0.04em;
+  }
+  .widget-detail {
+    font-size: 11px;
+    color: rgba(247,243,238,0.65);
+    margin-top: 6px;
+    padding-left: 20px;
+    line-height: 1.5;
+  }
+
+  /* Champ FIT */
+  .fit-input-zone {
+    margin-top: 10px;
+    padding-left: 20px;
+    display: none;
+  }
+  .fit-input-zone.visible { display: block; }
+  .fit-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .fit-input {
+    background: rgba(247,243,238,0.08);
+    border: 1px solid rgba(247,243,238,0.2);
+    border-radius: 6px;
+    color: var(--creme);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 7px 10px;
+    flex: 1;
+    outline: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .fit-input::placeholder { color: rgba(247,243,238,0.3); }
+  .fit-input:focus { border-color: var(--or); }
+  .fit-btn {
+    background: var(--or);
+    border: none;
+    border-radius: 6px;
+    color: var(--noir);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .fit-btn:hover { opacity: 0.85; }
+  .fit-msg {
+    font-size: 10px;
+    margin-top: 5px;
+    padding-left: 2px;
+    min-height: 14px;
+  }
+  .fit-msg.ok  { color: #4caf82; }
+  .fit-msg.err { color: #e05555; }
+
+  /* Compteur panier */
+  .panier-count {
+    background: var(--or);
+    color: var(--noir);
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 1px 7px;
+    display: none;
+  }
+  .panier-count.visible { display: inline-block; }
+
+  /* Bouton envoyer */
+  .btn-envoyer {
+    margin-top: 10px;
+    margin-left: 20px;
+    background: var(--or);
+    color: var(--noir);
+    border: none;
+    border-radius: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 8px 14px;
+    cursor: pointer;
+    display: none;
+    transition: opacity 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .btn-envoyer.visible { display: inline-block; }
+  .btn-envoyer:hover { opacity: 0.85; }
+
+  /* Caddy retour */
+  .caddy-zone {
+    margin-top: 10px;
+    padding-left: 20px;
+    display: none;
+  }
+  .caddy-zone.visible { display: block; }
+  .caddy-item {
+    font-size: 11px;
+    color: rgba(247,243,238,0.75);
+    line-height: 1.8;
+  }
+  .caddy-total {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--creme);
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(247,243,238,0.15);
+  }
+
+  /* ── CATALOGUE ── */
+  .section-titre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 0 40px;
+    margin-bottom: 24px;
+    color: var(--noir);
+  }
+  .section-titre span {
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--gris);
+    font-weight: 300;
+    margin-left: 12px;
+    letter-spacing: 0.06em;
+  }
+
+  .catalogue {
+    padding: 40px 40px 60px;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .article-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--or-pale);
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+  .article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(15,14,13,0.08);
+  }
+  .article-card.selectionne {
+    border-color: var(--or);
+    box-shadow: 0 0 0 2px var(--or-pale);
+  }
+
+  .article-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    background: #f0ebe4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--gris);
+    font-style: italic;
+    position: relative;
+  }
+  .article-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .article-img .placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gris);
+  }
+  .article-img .placeholder-icon {
+    font-size: 32px;
+    opacity: 0.4;
+  }
+
+  .badge-genre {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: var(--noir);
+    color: var(--creme);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .badge-collecte {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: var(--or);
+    color: var(--noir);
+    font-size: 9px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: none;
+  }
+  .article-card.selectionne .badge-collecte { display: block; }
+
+  .article-info {
+    padding: 14px 16px;
+  }
+  .article-categorie {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 4px;
+  }
+  .article-nom {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--noir);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .article-bas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .article-prix {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--noir);
+  }
+  .btn-collecter {
+    background: transparent;
+    border: 1px solid var(--or-pale);
+    border-radius: 6px;
+    color: var(--gris);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-collecter:hover, .article-card.selectionne .btn-collecter {
+    background: var(--or);
+    border-color: var(--or);
+    color: var(--noir);
+  }
+  .article-card.selectionne .btn-collecter::after { content: ' ✓'; }
+
+  /* État vide catalogue */
+  .catalogue-vide {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gris);
+  }
+  .catalogue-vide-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.3; }
+  .catalogue-vide-titre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: var(--noir);
+  }
+  .catalogue-vide-texte { font-size: 13px; line-height: 1.6; }
+
+  /* Toast */
+  /* ── CADDY BACK-OFFICE ── */
+#caddy-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 200;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transition: background 0.3s ease;
+}
+#caddy-btn.rouge { background: var(--rouge); }
+.caddy-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: white;
+  color: var(--rouge);
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  min-width: 18px;
+  text-align: center;
+}
+#backoffice-panel {
+  position: fixed;
+  bottom: 88px;
+  right: 16px;
+  width: min(420px, calc(100vw - 32px));
+  max-height: 70vh;
+  background: var(--noir);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  z-index: 199;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.bo-header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.bo-titre {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--creme);
+  font-weight: 400;
+}
+.bo-sous {
+  font-size: 11px;
+  color: rgba(247,243,238,0.4);
+  margin-top: 2px;
+  letter-spacing: 0.06em;
+}
+.bo-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: rgba(247,243,238,0.4);
+  font-size: 16px;
+  cursor: pointer;
+}
+#bo-content {
+  overflow-y: auto;
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bo-empty {
+  color: rgba(247,243,238,0.4);
+  font-size: 13px;
+  text-align: center;
+  padding: 24px 0;
+}
+.bo-cmd {
+  background: rgba(247,243,238,0.05);
+  border: 1px solid rgba(247,243,238,0.1);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bo-cmd-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.bo-cmd-fit {
+  font-size: 11px;
+  color: var(--or);
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.06em;
+}
+.bo-cmd-date {
+  font-size: 10px;
+  color: rgba(247,243,238,0.35);
+}
+.bo-cmd-membre {
+  font-size: 13px;
+  color: var(--creme);
+  font-weight: 500;
+}
+.bo-cmd-articles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bo-article {
+  font-size: 12px;
+  color: rgba(247,243,238,0.7);
+  display: flex;
+  justify-content: space-between;
+}
+.bo-cmd-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(247,243,238,0.08);
+  padding-top: 8px;
+  margin-top: 2px;
+}
+.bo-total {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--creme);
+}
+.bo-btn-caddy {
+  background: var(--or);
+  color: var(--noir);
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.bo-btn-caddy:hover { opacity: 0.85; }
+.bo-btn-caddy.done {
+  background: #2d6a4f;
+  color: white;
+  cursor: default;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--noir);
+    color: var(--creme);
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-left: 3px solid var(--or);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 999;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Loader */
+  .loader {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border: 2px solid rgba(247,243,238,0.2);
+    border-top-color: var(--or);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Poll indicator */
+  .poll-indicator {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: rgba(247,243,238,0.5);
+    margin-top: 8px;
+    padding-left: 20px;
+  }
+  .poll-indicator.visible { display: flex; }
+  .poll-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #e05555;
+    animation: pulse-rouge 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-rouge {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 16px 20px; }
+    nav { display: none; }
+    .hero { flex-direction: column; padding: 30px 20px 20px; }
+    .dreamfit-zone { max-width: 100%; min-width: unset; }
+    .catalogue { padding: 20px 20px 40px; }
+    .section-titre { padding: 0 20px; }
+    .articles-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">faust<em>i</em>ne</div>
+  <nav>
+    <a href="#">Nouveautés</a>
+    <a href="#">Robes</a>
+    <a href="#">Hauts</a>
+    <a href="#">Pantalons</a>
+    <a href="#">Accessoires</a>
+  </nav>
+</header>
+
+<!-- HERO + WIDGETS DREAM FIT -->
+<section class="hero">
+  <div>
+    <h1 class="hero-titre">
+      La mode<br>qui vous <em>ressemble</em>
+    </h1>
+    <p class="hero-sous">
+      Collections printemps — été 2026.<br>
+      Essayez virtuellement avant d'acheter.
+    </p>
+  </div>
+
+  <!-- ZONE DREAM FIT — 3 WIDGETS -->
+  <div class="dreamfit-zone">
+    <div class="df-header">
+      <div class="df-logo-badge">DF</div>
+      <div class="df-nom">Dream Fit</div>
+    </div>
+    <div class="df-tagline">Essayage virtuel · Cabine immersive</div>
+
+    <div class="widgets">
+
+      <!-- WIDGET VERT -->
+      <div class="widget widget-vert" id="widget-vert" onclick="activerWidgetVert()">
+        <div class="widget-row">
+          <div class="widget-dot dot-vert"></div>
+          <div class="widget-titre">Session</div>
+          <div class="widget-statut" id="statut-vert">Connectez Dream Fit</div>
+        </div>
+        <div class="widget-detail" id="detail-vert">
+          Ouvrez Dream Fit pour essayer vos articles en cabine virtuelle.
+        </div>
+        <!-- Saisie N° FIT -->
+        <div class="fit-input-zone" id="fit-zone">
+          <div class="fit-row">
+            <input class="fit-input" id="fit-input" type="text"
+              placeholder="FIT-DF-XXXX-XXXX"
+              maxlength="17"
+              oninput="formatFit(this)">
+            <button class="fit-btn" onclick="verifierFit(event)">Connecter</button>
+          </div>
+          <div class="fit-msg" id="fit-msg"></div>
+        </div>
+      </div>
+
+      <!-- WIDGET ORANGE -->
+      <div class="widget widget-orange" id="widget-orange">
+        <div class="widget-row">
+          <div class="widget-dot dot-orange"></div>
+          <div class="widget-titre">Collecte</div>
+          <span class="panier-count" id="panier-count">0 article</span>
+        </div>
+        <div class="widget-detail" id="detail-orange">
+          Ajoutez des articles à votre sélection Dream Fit.
+        </div>
+        <button class="btn-envoyer" id="btn-envoyer" onclick="envoyerDreamFit()">
+          Envoyer à Dream Fit →
+        </button>
+      </div>
+
+      <!-- WIDGET ROUGE -->
+      <div class="widget widget-rouge" id="widget-rouge">
+        <div class="widget-row">
+          <div class="widget-dot dot-rouge"></div>
+          <div class="widget-titre">Commande</div>
+          <div class="widget-statut" id="statut-rouge">En attente</div>
+        </div>
+        <div class="poll-indicator" id="poll-indicator">
+          <div class="poll-dot"></div>
+          En attente de votre sélection Dream Fit…
+        </div>
+        <div class="caddy-zone" id="caddy-zone"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGUE -->
+<section class="catalogue">
+  <h2 class="section-titre">
+    Catalogue
+    <span id="compte-articles"></span>
+  </h2>
+  <div class="articles-grid" id="articles-grid">
+    <div class="catalogue-vide">
+      <div class="catalogue-vide-icon">✦</div>
+      <div class="catalogue-vide-titre">Chargement du catalogue…</div>
+      <div class="catalogue-vide-texte">Connexion à Faustine en cours.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- CADDY BACK-OFFICE -->
+<div id="caddy-btn" onclick="toggleBackoffice()" title="Commandes à distance">
+  <span id="caddy-icon">🛒</span>
+  <span id="caddy-badge" class="caddy-badge" style="display:none">0</span>
+</div>
+
+<!-- BACK-OFFICE PANEL -->
+<div id="backoffice-panel" style="display:none">
+  <div class="bo-header">
+    <div class="bo-titre">Commandes à distance</div>
+    <div class="bo-sous">faust-fr · remote uniquement</div>
+    <button class="bo-close" onclick="toggleBackoffice()">✕</button>
+  </div>
+  <div id="bo-content">
+    <div class="bo-empty">Chargement...</div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// CONFIG SUPABASE — Dream Fit
+// ══════════════════════════════════════════════
+const SB_URL  = 'https://fwjfnrpyetmjvqsrbxhi.supabase.co';
+const SB_KEY  = 'sb_publishable_WjAobwu3SJMB4d0gbg7vmQ_w9z2YOsP';
+const ENSEIGNE = 'faust-fr';
+
+const HEADERS_READ = {
+  'apikey': SB_KEY,
+  'Authorization': `Bearer ${SB_KEY}`
+};
+const HEADERS = {
+  ...HEADERS_READ,
+  'Content-Type': 'application/json'
+};
+
+// ══════════════════════════════════════════════
+// MAPPING ALLER — Faustine → Dream Fit
+// Noms Faustine différents des noms Dream Fit
+// ══════════════════════════════════════════════
+function mapperAllerVersDream(articleFaustine) {
+  return {
+    article_id:       articleFaustine.fst_id,
+    article_ref:      articleFaustine.code_produit,
+    nom:              articleFaustine.libelle,
+    categorie:        articleFaustine.famille,
+    genre:            articleFaustine.rayon,
+    photo_plat_url:   articleFaustine.visuel_plat,
+    photo_url:        articleFaustine.visuel_mannequin,
+    prix:             articleFaustine.prix_ttc,
+    tailles:          articleFaustine.grille_tailles,
+    body_zone:        articleFaustine.zone_corps,
+    enseigne_slug:    articleFaustine.boutique_id,
+    // Champs Dream Fit internes
+    statut:           'PENDING',
+    code_systeme:     'OK',
+  };
+}
+
+// ══════════════════════════════════════════════
+// MAPPING RETOUR — Dream Fit → caddy Faustine
+// ══════════════════════════════════════════════
+function mapperRetourVersFaustine(commandeDream) {
+  return {
+    identifiant_client: commandeDream.fit_number,
+    ref_session:        commandeDream.session_id,
+    boutique_id:        commandeDream.enseigne_slug,
+    prenom_client:      commandeDream.membre_nom,
+    liste_articles:     commandeDream.articles,
+    montant_total:      commandeDream.total,
+    etat_commande:      commandeDream.statut,
+    mode_livraison:     commandeDream.location,
+    date_expiration:    commandeDream.expires_at,
+  };
+}
+
+// ══════════════════════════════════════════════
+// ÉTAT GLOBAL
+// ══════════════════════════════════════════════
+let fitNumber    = null;
+let sessionId    = null;
+let articlesCollectes = [];   // articles Faustine sélectionnés
+let pollInterval = null;
+let articlesCatalogue = [];   // données brutes Supabase
+
+// ══════════════════════════════════════════════
+// UTILITAIRES
+// ══════════════════════════════════════════════
+function toast(msg, duree = 3000) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), duree);
+}
+
+function genSessionId() {
+  const r = () => Math.random().toString(36).substr(2, 4).toUpperCase();
+  return `fst-${r()}-${r()}`;
+}
+
+function formatFit(input) {
+  // Laisser l'utilisateur saisir librement en majuscules
+  // On normalise uniquement la casse — pas de reformatage destructif
+  input.value = input.value.toUpperCase();
+}
+
+// ══════════════════════════════════════════════
+// WIDGET VERT — saisie + vérification FIT
+// ══════════════════════════════════════════════
+function activerWidgetVert() {
+  if (fitNumber) return;
+  document.getElementById('fit-zone').classList.add('visible');
+  document.getElementById('fit-input').focus();
+}
+
+async function verifierFit(e) {
+  e.stopPropagation();
+  const input = document.getElementById('fit-input');
+  const msg   = document.getElementById('fit-msg');
+  const val   = input.value.trim().toUpperCase();
+
+  if (!val.startsWith('FIT-DF-') || val.length !== 16) {
+    msg.className = 'fit-msg err';
+    msg.textContent = 'Format attendu : FIT-DF-XXXX-XXXX';
+    return;
+  }
+
+  msg.className = 'fit-msg';
+  msg.innerHTML = '<span class="loader"></span>Vérification…';
+
+  try {
+    const r = await fetch(
+      `${SB_URL}/rest/v1/rpc/df_check_fit`,
+      {
+        method: 'POST',
+        headers: HEADERS,
+        body: JSON.stringify({ p_fit: val })
+      }
+    );
+    const text = await r.text();
+    let data;
+    try { data = JSON.parse(text); } catch { data = null; }
+
+    if (data && data.fit_number) {
+      fitNumber = data.fit_number;
+      // Sauvegarder pour la prochaine session
+      localStorage.setItem('df_fit_number', fitNumber);
+
+      document.getElementById('fit-zone').classList.remove('visible');
+      document.getElementById('widget-vert').classList.add('actif');
+      document.getElementById('statut-vert').textContent = '● Connecté';
+      document.getElementById('detail-vert').textContent =
+        `Dream Fit est actif — ${fitNumber}`;
+
+      document.getElementById('widget-orange').classList.add('actif');
+      document.getElementById('widget-orange').style.pointerEvents = 'auto';
+
+      // Vérifier commandes existantes immédiatement
+      document.getElementById('widget-rouge').classList.add('actif');
+      pollCommandes();
+
+      toast(`✓ Dream Fit connecté — ${fitNumber}`);
+    } else {
+      msg.className = 'fit-msg err';
+      msg.textContent = `N° FIT introuvable (${r.status}) — vérifiez dans Dream Fit.`;
+    }
+  } catch(err) {
+    msg.className = 'fit-msg err';
+    msg.textContent = `Erreur : ${err.message}`;
+  }
+}
+
+// ══════════════════════════════════════════════
+// CATALOGUE — chargement Supabase
+// ══════════════════════════════════════════════
+async function chargerCatalogue() {
+  try {
+    const r = await fetch(
+      `${SB_URL}/rest/v1/df_articles_view?enseigne_slug=eq.${ENSEIGNE}&select=*&order=categorie.asc`,
+      { headers: HEADERS_READ }
+    );
+    const data = await r.json();
+
+    if (!Array.isArray(data) || data.length === 0) {
+      afficherCatalogueVide('Aucun article disponible pour le moment.');
+      return;
+    }
+
+    articlesCatalogue = data;
+    afficherArticles(data);
+    document.getElementById('compte-articles').textContent =
+      `${data.length} pièce${data.length > 1 ? 's' : ''}`;
+
+  } catch(err) {
+    afficherCatalogueVide('Erreur de chargement du catalogue.');
+  }
+}
+
+function afficherArticles(articles) {
+  const grid = document.getElementById('articles-grid');
+  grid.innerHTML = articles.map(a => `
+    <div class="article-card" id="card-${a.article_id}" onclick="toggleCollecter('${a.article_id}')">
+      <div class="article-img">
+        ${a.photo_url
+          ? `<img src="${a.photo_url}" alt="${a.nom}" onerror="this.style.display='none'">`
+          : ''}
+        <div class="placeholder">
+          <div class="placeholder-icon">✦</div>
+          <div>${a.categorie || 'Article'}</div>
+        </div>
+        <div class="badge-genre">${a.genre === 'F' ? 'Femme' : 'Homme'}</div>
+        <div class="badge-collecte">✓ Sélectionné</div>
+      </div>
+      <div class="article-info">
+        <div class="article-categorie">${a.categorie || ''}</div>
+        <div class="article-nom">${a.nom || 'Article'}</div>
+        <div class="article-bas">
+          <div class="article-prix">${a.prix ? Number(a.prix).toFixed(2) + ' €' : '—'}</div>
+          <button class="btn-collecter" onclick="event.stopPropagation(); toggleCollecter('${a.article_id}')">
+            Collecter
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function afficherCatalogueVide(msg) {
+  document.getElementById('articles-grid').innerHTML = `
+    <div class="catalogue-vide">
+      <div class="catalogue-vide-icon">✦</div>
+      <div class="catalogue-vide-titre">Catalogue</div>
+      <div class="catalogue-vide-texte">${msg}</div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════════
+// COLLECTER UN ARTICLE
+// ══════════════════════════════════════════════
+function toggleCollecter(articleId) {
+  if (!fitNumber) {
+    activerWidgetVert();
+    toast('Connectez d\'abord votre Dream Fit');
+    return;
+  }
+
+  const card    = document.getElementById(`card-${articleId}`);
+  const article = articlesCatalogue.find(a => a.article_id === articleId);
+  if (!article) return;
+
+  const idx = articlesCollectes.findIndex(a => a.article_id === articleId);
+
+  if (idx === -1) {
+    articlesCollectes.push(article);
+    card.classList.add('selectionne');
+    toast(`✓ "${article.nom}" ajouté`);
+  } else {
+    articlesCollectes.splice(idx, 1);
+    card.classList.remove('selectionne');
+    toast(`"${article.nom}" retiré`);
+  }
+
+  // Mettre à jour compteur widget orange
+  const n = articlesCollectes.length;
+  const countEl = document.getElementById('panier-count');
+  const btnEl   = document.getElementById('btn-envoyer');
+  const detailEl = document.getElementById('detail-orange');
+
+  if (n > 0) {
+    countEl.textContent = `${n} article${n > 1 ? 's' : ''}`;
+    countEl.classList.add('visible');
+    btnEl.classList.add('visible');
+    detailEl.textContent = `${n} article${n > 1 ? 's' : ''} sélectionné${n > 1 ? 's' : ''} — prêt à envoyer.`;
+  } else {
+    countEl.classList.remove('visible');
+    btnEl.classList.remove('visible');
+    detailEl.textContent = 'Ajoutez des articles à votre sélection Dream Fit.';
+  }
+}
+
+// ══════════════════════════════════════════════
+// ENVOYER À DREAM FIT
+// ══════════════════════════════════════════════
+async function envoyerDreamFit() {
+  if (!fitNumber || articlesCollectes.length === 0) return;
+
+  const btn = document.getElementById('btn-envoyer');
+  btn.innerHTML = '<span class="loader"></span>Envoi…';
+  btn.disabled = true;
+
+  // Générer session_id Faustine
+  sessionId = genSessionId();
+  const expiresAt = new Date(Date.now() + 24 * 3600 * 1000).toISOString();
+
+  // Mapper les articles Faustine → Dream Fit via df_mapping_aller
+  // Article Faustine utilise ses propres noms (simulation mapping)
+  const articlesFaustine = articlesCollectes.map(a => ({
+    fst_id:           a.article_id,       // notre champ = fst_id chez Faustine
+    code_produit:     a.article_ref,
+    libelle:          a.nom,
+    famille:          a.categorie,
+    rayon:            a.genre,
+    visuel_plat:      a.photo_plat_url,
+    visuel_mannequin: a.photo_url,
+    prix_ttc:         a.prix,
+    grille_tailles:   a.tailles,
+    zone_corps:       a.body_zone,
+    boutique_id:      ENSEIGNE,
+  }));
+
+  // Appliquer le mapping aller → format Dream Fit
+  const articlesDream = articlesFaustine.map(mapperAllerVersDream);
+
+  try {
+    // Écrire dans df_portant (Supabase Dream Fit)
+    const r = await fetch(`${SB_URL}/rest/v1/df_portant`, {
+      method: 'POST',
+      headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+      body: JSON.stringify({
+        session_id:    sessionId,
+        fit_number:    fitNumber,
+        enseigne_slug: ENSEIGNE,
+        articles:      articlesDream,
+        expires_at:    expiresAt,
+      })
+    });
+
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+
+    // Widget orange → confirmé
+    btn.classList.remove('visible');
+    document.getElementById('detail-orange').textContent =
+      `✓ ${articlesCollectes.length} article(s) transmis à Dream Fit.`;
+    document.getElementById('panier-count').classList.remove('visible');
+
+    // Activer widget rouge + démarrer le poll
+    document.getElementById('widget-rouge').classList.add('actif');
+    document.getElementById('statut-rouge').textContent = 'En attente…';
+    document.getElementById('poll-indicator').classList.add('visible');
+
+    // Deep Link vers Dream Fit (ouvre l'app en arrière-plan)
+    const deepLink = `dreamfit://portant?sid=${sessionId}&enseigne=${ENSEIGNE}&fit=${fitNumber}`;
+    window.location.href = deepLink;
+
+    toast('✓ Transmis — Dream Fit s\'ouvre en arrière-plan', 4000);
+
+    // Démarrer le polling df_commandes
+    demarrerPoll();
+
+  } catch(err) {
+    btn.innerHTML = 'Envoyer à Dream Fit →';
+    btn.disabled = false;
+    toast('Erreur d\'envoi — réessayez');
+  }
+}
+
+// ══════════════════════════════════════════════
+// POLL df_commandes — Dream Fit → caddy Faustine
+// ══════════════════════════════════════════════
+function demarrerPoll() {
+  if (pollInterval) clearInterval(pollInterval);
+  pollInterval = setInterval(pollCommandes, 5000);
+  pollCommandes(); // premier appel immédiat
+}
+
+async function pollCommandes() {
+  if (!fitNumber) return;
+  // Si pas de sessionId, on poll toutes les commandes récentes pour ce FIT
+  if (!sessionId) {
+    try {
+      const r = await fetch(
+        `${SB_URL}/rest/v1/df_commandes?fit_number=eq.${fitNumber}&enseigne_slug=eq.${ENSEIGNE}&order=created_at.desc&limit=1&select=*`,
+        { headers: HEADERS_READ }
+      );
+      const data = await r.json();
+      if (Array.isArray(data) && data.length > 0) {
+        const cmd = data[0];
+        const expires = new Date(cmd.expires_at);
+        if (expires > new Date()) {
+          afficherCaddy(cmd);
+        }
+      }
+    } catch(e) {}
+    return;
+  }
+
+  try {
+    const r = await fetch(
+      `${SB_URL}/rest/v1/df_commandes?fit_number=eq.${fitNumber}&session_id=eq.${sessionId}&select=*&order=created_at.desc&limit=1`,
+      { headers: HEADERS_READ }
+    );
+    const data = await r.json();
+
+    if (Array.isArray(data) && data.length > 0) {
+      clearInterval(pollInterval);
+      afficherCaddy(data[0]);
+    }
+  } catch(err) { /* silencieux */ }
+}
+
+function afficherCaddy(commandeDream) {
+  // Appliquer mapping retour → noms Faustine
+  const caddyFaustine = mapperRetourVersFaustine(commandeDream);
+
+  // Mettre à jour widget rouge
+  document.getElementById('poll-indicator').classList.remove('visible');
+  document.getElementById('statut-rouge').textContent = '● Commande reçue';
+  document.getElementById('widget-rouge').style.background = 'rgba(168,40,40,0.25)';
+
+  const articles = caddyFaustine.liste_articles || [];
+  const caddy    = document.getElementById('caddy-zone');
+
+  caddy.innerHTML = `
+    <div class="caddy-item">
+      ${articles.filter(a => a.statut === 'ACCEPTED').map(a =>
+        `✓ ${a.nom || a.article_id} — taille ${a.taille || '?'} — ${Number(a.prix||0).toFixed(2)} €`
+      ).join('<br>')}
+    </div>
+    <div class="caddy-total">
+      Total : ${Number(caddyFaustine.montant_total||0).toFixed(2)} € · 
+      ${caddyFaustine.mode_livraison === 'store' ? '🏪 Magasin' : '🚚 Livraison'} · 
+      ${caddyFaustine.prenom_client || ''}
+    </div>
+  `;
+  caddy.classList.add('visible');
+
+  toast('✓ Commande Dream Fit reçue — caddy Faustine mis à jour', 5000);
+}
+
+// ══════════════════════════════════════════════
+// BACK-OFFICE — Commandes remote Faustine
+// ══════════════════════════════════════════════
+let backofficeOpen = false;
+let commandesRemote = [];
+let commandesInjectees = new Set(); // IDs déjà injectés dans le caddy
+
+async function chargerCommandesRemote() {
+  try {
+    const r = await fetch(
+      `${SB_URL}/rest/v1/df_commandes?enseigne_slug=eq.faust-fr&location=eq.remote&order=created_at.desc`,
+      { headers: HEADERS_READ }
+    );
+    const data = await r.json();
+    if (!Array.isArray(data)) return;
+
+    // Filtrer commandes non expirées
+    const now = new Date();
+    commandesRemote = data.filter(cmd => {
+      if (!cmd.expires_at) return true;
+      return new Date(cmd.expires_at) > now;
+    });
+
+    // Mettre à jour badge
+    const nbNouvelles = commandesRemote.filter(c => !commandesInjectees.has(c.id)).length;
+    const badge = document.getElementById('caddy-badge');
+    const btn   = document.getElementById('caddy-btn');
+
+    if (nbNouvelles > 0) {
+      badge.textContent = nbNouvelles;
+      badge.style.display = 'inline-block';
+      btn.classList.add('rouge');
+    } else {
+      badge.style.display = 'none';
+      btn.classList.remove('rouge');
+    }
+
+    // Mettre à jour le panel si ouvert
+    if (backofficeOpen) renderBackoffice();
+
+  } catch(e) {}
+}
+
+function renderBackoffice() {
+  const content = document.getElementById('bo-content');
+  if (commandesRemote.length === 0) {
+    content.innerHTML = '<div class="bo-empty">Aucune commande à distance en attente.</div>';
+    return;
+  }
+
+  content.innerHTML = commandesRemote.map(cmd => {
+    const articles = Array.isArray(cmd.articles) ? cmd.articles : [];
+    const accepted = articles.filter(a => a.statut === 'ACCEPTED' || !a.statut);
+    const total    = Number(cmd.total || 0).toFixed(2);
+    const date     = new Date(cmd.created_at).toLocaleString('fr-FR', {
+      day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
+    });
+    const injected = commandesInjectees.has(cmd.id);
+
+    return `
+      <div class="bo-cmd">
+        <div class="bo-cmd-header">
+          <div>
+            <div class="bo-cmd-fit">${cmd.fit_number || '—'}</div>
+            <div class="bo-cmd-membre">${cmd.membre_nom || 'Client'}</div>
+          </div>
+          <div class="bo-cmd-date">${date}</div>
+        </div>
+        <div class="bo-cmd-articles">
+          ${accepted.map(a => `
+            <div class="bo-article">
+              <span>${a.nom || 'Article'} — taille ${a.taille || a.taille_choisie || '?'}</span>
+              <span>${Number(a.prix || 0).toFixed(2)} €</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="bo-cmd-footer">
+          <div class="bo-total">Total : ${total} €</div>
+          <button 
+            class="bo-btn-caddy ${injected ? 'done' : ''}"
+            onclick="injecterCaddy('${cmd.id}')"
+            ${injected ? 'disabled' : ''}>
+            ${injected ? '✓ Injecté' : '🛒 Injecter dans le caddy'}
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function injecterCaddy(cmdId) {
+  // Simulation injection caddy enseigne
+  commandesInjectees.add(cmdId);
+  renderBackoffice();
+  
+  // Mettre à jour badge
+  const nbNouvelles = commandesRemote.filter(c => !commandesInjectees.has(c.id)).length;
+  const badge = document.getElementById('caddy-badge');
+  const btn   = document.getElementById('caddy-btn');
+  if (nbNouvelles > 0) {
+    badge.textContent = nbNouvelles;
+  } else {
+    badge.style.display = 'none';
+    btn.classList.remove('rouge');
+  }
+
+  toast('✓ Commande injectée dans le caddy Faustine', 3000);
+}
+
+function toggleBackoffice() {
+  backofficeOpen = !backofficeOpen;
+  const panel = document.getElementById('backoffice-panel');
+  panel.style.display = backofficeOpen ? 'flex' : 'none';
+  if (backofficeOpen) renderBackoffice();
+}
+
+// Poll back-office toutes les 10 secondes
+setInterval(chargerCommandesRemote, 10000);
+
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  chargerCatalogue();
+  chargerCommandesRemote();
+  // Restaurer session FIT si déjà connecté
+  const fitSauvegarde = localStorage.getItem('df_fit_number');
+  if (fitSauvegarde) {
+    fitNumber = fitSauvegarde;
+    document.getElementById('widget-vert').classList.add('actif');
+    document.getElementById('statut-vert').textContent = '● Connecté';
+    document.getElementById('detail-vert').textContent = 'Dream Fit est actif — ' + fitSauvegarde;
+    document.getElementById('fit-zone').classList.remove('visible');
+    document.getElementById('widget-orange').classList.add('actif');
+    document.getElementById('widget-orange').style.pointerEvents = 'auto';
+    // Vérifier commandes en attente
+    pollCommandes();
+  }
+});
+</script>
+</body>
+</html>
